@@ -19,6 +19,6 @@ NodeJS: v16.13.1
 
 ## Author
 
-- Member 1
-- Member 2
-- Member 3
+- Augyeris Lioga Seandrio
+- Corwin Rudly
+- Enggar Lokheswara Renanda

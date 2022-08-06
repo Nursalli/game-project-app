@@ -1,10 +1,12 @@
-import { useState } from 'react';
-import { BrowserRouter as Router, useNavigate } from 'react-router-dom'
-import Footer from './components/Footer';
+import { useState } from "react";
+import { BrowserRouter as Router, useNavigate } from "react-router-dom";
+import Footer from "./components/Footer";
 
-import Navbar from './components/Navbar';
-import Routes from './Routes';
+import Navbar from "./components/Navbar";
+import Routes from "./Routes";
+import axios from "axios";
 
+axios.defaults.baseURL = "https://62ed0b45818ab252b60860b1.mockapi.io/";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
@@ -15,7 +17,7 @@ function App() {
         isLoggedIn={isLoggedIn}
         onSignOut={() => {
           setIsLoggedIn(false);
-          navigate('/login');
+          navigate("/login");
         }}
       />
       <div className="container mt-5 mb-5">
@@ -23,18 +25,18 @@ function App() {
           <Routes
             onSignIn={() => {
               setIsLoggedIn(true);
-              navigate('/home');
+              navigate("/home");
             }}
             onSignUp={() => {
               setIsLoggedIn(true);
-              navigate('/home');
+              navigate("/home");
             }}
           />
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
-  )
+  );
 }
 
 export default App;

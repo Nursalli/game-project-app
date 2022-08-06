@@ -1,4 +1,4 @@
-# Mock Platinum App
+# Game Project App
 
 ## Install
 ```sh

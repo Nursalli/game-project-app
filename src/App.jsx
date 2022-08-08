@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { BrowserRouter as Router, useNavigate } from "react-router-dom";
-import Footer from "./components/Footer";
-
-import Navbar from "./components/Navbar";
+import {
+  Footer,
+  Navbar
+} from "./components/index"
 import Routes from "./Routes";
 import axios from "axios";
 

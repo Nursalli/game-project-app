@@ -2,7 +2,7 @@ import { Routes as ReactRoutes, Route } from 'react-router-dom';
 import GameDetails from './pages/GameDetails';
 import GameList from './pages/GameList';
 
-import Home from './pages/Home';
+import Home from './pages/HomePage/Home';
 import Login from './pages/Login';
 import Page404 from './pages/Page404';
 import Register from './pages/Register';

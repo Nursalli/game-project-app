@@ -1,0 +1,39 @@
+.profilePict {
+    width: 140px;
+    height: 140px
+}
+
+.profileInfo {
+    margin-top: 40PX;
+    margin-bottom: 15px;
+}
+
+.profilePoint {
+    color: red;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.formFlow {
+    max-height: 320px;
+    overflow-y: scroll;
+}
+
+.scrollFlow2 {
+    overflow-y: scroll;
+    max-height: 360px;
+}
+
+.editButton {
+    height: 30px;
+    width: 120px;
+    background-color: #ccc;
+    border-radius: 0px;
+    border: 1px solid black;
+    color: black;
+    padding: 0px;
+}
+
+.gameBody {
+    max-height: 430px;
+}

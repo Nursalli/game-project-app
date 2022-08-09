@@ -1,4 +1,4 @@
-import styles from "./gameComponent.css"
+import "./GameComponent.css"
 
 function GameHistory (props) {
     return (
@@ -10,7 +10,7 @@ function GameHistory (props) {
 
                 <div className="col d-flex flex-column justify-content-center align-items-start gameName">
                     <p>{props.gameName}</p>
-                    <button type="button" className="btn">
+                    <button type="button" className="c-btn">
                         Play
                     </button>
                 </div>

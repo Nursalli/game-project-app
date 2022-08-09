@@ -5,23 +5,17 @@
     margin-left: 3px
 }
 
-div.col {
-    height: 100px;
-    width: 100px;    
-    padding: 0px;
-
-}
 
 .thumbnails {
     width: 95px;
     height: 80px;
 }
 
-.btn{
+.c-btn {
     background-color: #ccc;
     color: black;
-    height: 35px;
-    width: 85px;
+    height: 28px;
+    width: 95px;
     padding: 0px;
     border-radius: 0px;
     border: 1px solid black;
@@ -53,10 +47,15 @@ div.col.scoreHistory {
     margin: 0px;
 }
 
-.gamePoint>p.value {
+.gamePoint > p.value {
     color: red
 }
 
 .scoreHistory > p {
     font-size: 17px;
+}
+
+.pageFooter {
+    position: absolute;
+    bottom: 99;
 }

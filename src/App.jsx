@@ -7,7 +7,7 @@ import {
 import Routes from "./Routes";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://62ed0b45818ab252b60860b1.mockapi.io/";
+axios.defaults.baseURL = "https://game-project-service.herokuapp.com/";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();

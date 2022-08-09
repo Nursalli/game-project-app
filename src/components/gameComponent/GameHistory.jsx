@@ -10,7 +10,8 @@ function GameHistory (props) {
 
                 <div className="col d-flex flex-column justify-content-center align-items-start gameName">
                     <p>{props.gameName}</p>
-                    <button type="button" className="c-btn">
+
+                    <button type="button" className="c-button">
                         Play
                     </button>
                 </div>

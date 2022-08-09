@@ -11,6 +11,8 @@ function Register(props) {
     setLastName,
     password,
     setPassword,
+    confirmPassword,
+    setConfirmPassword,
   } = useForm();
 
   return (
@@ -77,7 +79,15 @@ function Register(props) {
           <label className="form-label" htmlFor="form2Example2">
             Re-type Password
           </label>
-          <input type="password" id="form2Example2" className="form-control" />
+          <input
+            type="password"
+            value={confirmPassword}
+            id="form2Example2"
+            className="form-control"
+            onChange={(e) => {
+              setConfirmPassword(e.target.value);
+            }}
+          />
         </div>
 
         {/* <!-- Submit button --> */}

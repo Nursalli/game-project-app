@@ -52,6 +52,7 @@ const useForm = () => {
           title: "Login Berhasil",
           timer: 2500,
         });
+        localStorage.setItem("token", res.data?.data?.token);
         console.log(res);
       })
       .catch((err) => {

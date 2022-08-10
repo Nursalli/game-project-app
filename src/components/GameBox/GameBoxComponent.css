@@ -1,0 +1,53 @@
+.grid_game {
+    display: inline-flex;
+    flex-flow: wrap;
+    padding: 30px 150px;
+}
+
+.item_game{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.gameName {
+    display: block;
+    padding: 12px 0px;
+    text-align: center
+}
+
+.gameName > p {
+    font-size: 16px;
+    letter-spacing: 0.05em;
+}
+
+.gameName > h4 {
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+}
+
+.pointName > ul {
+    font-size: 9.5px;
+    
+    margin-bottom: 5px;
+    margin-left: -30px;
+    text-align: left;
+}
+
+
+
+.c-button{
+    background-color: #ccc;
+    color: blue;
+    width: 80%;
+    border-radius: 20px;
+    border: solid black;
+    font-size: 25px; 
+}
+
+.pageFooter {
+    position: absolute;
+    bottom: 99;
+}

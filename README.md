@@ -7,6 +7,13 @@ $ yarn
 $ npm install
 ```
 
+## Setup
+
+Set up your `.env` file align with `.env.sample` given
+
+```.env
+VITE_BACKEND_BASE_URL=https://testing-game-project-service.herokuapp.com/
+```
 ## Run
 
 ```sh

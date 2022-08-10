@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const useForm = () => {
   const [email, setEmail] = useState("");
@@ -8,6 +9,8 @@ const useForm = () => {
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   //   handle register
   const handleRegister = async (e) => {
@@ -26,7 +29,7 @@ const useForm = () => {
           title: "Login Berhasil",
           timer: 2500,
         });
-        console.log(res);
+        navigate("/login");
       })
       .catch((err) => {
         Swal.fire({
@@ -41,6 +44,7 @@ const useForm = () => {
   //   handle login
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
     axios
       .post("/users/login", {
         email: email,
@@ -52,8 +56,9 @@ const useForm = () => {
           title: "Login Berhasil",
           timer: 2500,
         });
+        setLoading(false);
         localStorage.setItem("token", res.data?.data?.token);
-        console.log(res);
+        navigate("/home");
       })
       .catch((err) => {
         Swal.fire({
@@ -61,6 +66,7 @@ const useForm = () => {
           title: "Oops...",
           text: err.response?.data?.message || "something wrong!",
         });
+        setLoading(false);
         console.log(err);
       });
   };
@@ -78,6 +84,8 @@ const useForm = () => {
     setPassword,
     confirmPassword,
     setConfirmPassword,
+    loading,
+    setLoading,
   };
 };
 

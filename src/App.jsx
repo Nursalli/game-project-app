@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { BrowserRouter as Router, useNavigate } from "react-router-dom";
-import {
-  Footer,
-  Navbar
-} from "./components/index"
+import { Footer, Navbar } from "./components/index";
 import Routes from "./Routes";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://game-project-service.herokuapp.com/";
+axios.defaults.baseURL = import.meta.env.BACKEND_BASE_URL;
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();

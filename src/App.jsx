@@ -4,7 +4,7 @@ import { Footer, Navbar } from "./components/index";
 import Routes from "./Routes";
 import axios from "axios";
 
-axios.defaults.baseURL = import.meta.env.BACKEND_BASE_URL;
+axios.defaults.baseURL = import.meta.env.VITE_BACKEND_BASE_URL;
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

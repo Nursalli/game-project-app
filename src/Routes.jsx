@@ -6,7 +6,7 @@ import Home from './pages/HomePage/Home';
 import Login from './pages/Login';
 import Page404 from './pages/Page404';
 import Register from './pages/Register';
-import Profile from './pages/Profile';
+import Profile from './pages/ProfilePage/Profile';
 import Landing from './pages/Landing';
 import Playing from './pages/Playing';
 
@@ -17,7 +17,8 @@ function Routes(props) {
         <Route path=":gameId" element={<GameDetails />} />
       </Route>
       <Route path="/playing/:gameId" element={<Playing />} />
-      <Route path="/profile/:userId" element={<Profile />} />
+      {/* <Route path="/profile/:userId" element={<Profile />} /> */}
+      <Route path="/profile" element={<Profile />} />
       <Route path="/home" element={<Home />} />
       <Route path="/login" element={<Login onSignIn={props.onSignIn} />} />
       <Route path="/register" element={<Register onSignUp={props.onSignUp} />} />

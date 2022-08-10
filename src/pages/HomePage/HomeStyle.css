@@ -1,6 +1,6 @@
 .scrollFlow {
-    max-height: 480px;
-    overflow-y: auto;
+    max-height: 440px;
+    overflow-y: scroll;
 }
 
 .subTitle > p {
@@ -28,11 +28,12 @@ div.badgeIcon {
     display: block;
     box-sizing: border-box;
     background-color: #444;
-    font-size: 1.2em;
+    font-size: 1.3em;
     color: white;
-    height: 32px;
-    width: 180px;
+    height: 35px;
+    width: 170px;
     margin-left: 4px;
+    padding-bottom: 10px;
 }
 
 div.col-5 > p > span {

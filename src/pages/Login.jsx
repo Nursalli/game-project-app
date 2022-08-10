@@ -1,13 +1,24 @@
+import { useEffect } from "react";
 import useForm from "../utils/useForm";
+import { useNavigate } from "react-router-dom";
 
 function Login(props) {
-  const { handleLogin, email, setEmail, password, setPassword } = useForm();
+  const { handleLogin, email, setEmail, password, setPassword, loading } =
+    useForm();
+
+  let navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/home");
+    }
+  }, []);
   return (
     <div className="border shadow rounded w-50">
       <form onSubmit={handleLogin}>
         {/* <!-- Email input --> */}
         <div className="form-outline mb-4 pt-4">
-          <label className="form-label" for="form2Example1">
+          <label className="form-label" htmlFor="form2Example1">
             Email
           </label>
           <input
@@ -23,7 +34,7 @@ function Login(props) {
 
         {/* <!-- Password input --> */}
         <div className="form-outline mb-4">
-          <label className="form-label" for="form2Example2">
+          <label className="form-label" htmlFor="form2Example2">
             Password
           </label>
           <input
@@ -39,17 +50,28 @@ function Login(props) {
 
         {/* <!-- Submit button --> */}
         <div className="d-flex w-100 justify-content-center">
-          <button
-            // onClick={props.onSignIn}
-            className="btn btn-primary btn-block mb-4"
-          >
-            Login
-          </button>
+          {loading ? (
+            <button
+              // onClick={props.onSignIn}
+              className="btn btn-primary btn-block mb-4"
+              disabled
+            >
+              Loading ...
+            </button>
+          ) : (
+            <button
+              // onClick={props.onSignIn}
+              className="btn btn-primary btn-block mb-4"
+            >
+              Login
+            </button>
+          )}
         </div>
         <div className="d-flex w-100 justify-content-center">
           <button
             // onClick={props.onSignIn}
             className="btn btn-primary btn-block mb-4"
+            disabled
           >
             (G) Login with Google
           </button>

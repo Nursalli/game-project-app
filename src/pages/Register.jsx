@@ -1,4 +1,6 @@
 import useForm from "../utils/useForm";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function Register(props) {
   const {
@@ -14,6 +16,14 @@ function Register(props) {
     confirmPassword,
     setConfirmPassword,
   } = useForm();
+
+  let navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/home");
+    }
+  }, []);
 
   return (
     <div className="border shadow rounded w-50">

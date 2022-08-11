@@ -48,12 +48,6 @@ function Home() {
     fetchData();
   }, []);
 
-  const handleClick = () => {
-    console.log(badgesPoint);
-    console.log(myHistories);
-    console.log(myGames);
-  };
-
   return (
     <>
       <div className="container">
@@ -65,9 +59,7 @@ function Home() {
           </div>
           <div className="col-5 d-flex justify-content-end">
             <p className="userName">{badgesPoint.userFirstName}</p>
-            <div className="badgeIcon text-center" onClick={handleClick}>
-              {badgesPoint.badge}
-            </div>
+            <div className="badgeIcon text-center">{badgesPoint.badge}</div>
           </div>
         </div>
 

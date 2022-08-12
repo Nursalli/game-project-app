@@ -8,7 +8,7 @@ import Page404 from './pages/Page404';
 import Register from './pages/Register';
 import Profile from './pages/ProfilePage/Profile';
 import Landing from './pages/Landing';
-import Playing from './pages/Playing';
+import Playing from './pages/PlayingPage/Playing';
 
 function Routes(props) {
   return (
@@ -16,7 +16,8 @@ function Routes(props) {
       <Route path="/games" element={<GameList />}>
         <Route path=":gameId" element={<GameDetails />} />
       </Route>
-      <Route path="/playing/:gameId" element={<Playing />} />
+      {/* <Route path="/playing/:gameId" element={<Playing />} /> */}
+      <Route path="/playing" element={<Playing />} />
       {/* <Route path="/profile/:userId" element={<Profile />} /> */}
       <Route path="/profile" element={<Profile />} />
       <Route path="/home" element={<Home />} />

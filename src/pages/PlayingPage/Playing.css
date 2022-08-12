@@ -1,0 +1,89 @@
+
+.playerName > div > p {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 28px;
+    color: black; 
+    line-height: 30px;
+    letter-spacing: 3px;
+}
+
+
+p.brandName {
+    font-style: normal;
+    font-size: 28px;
+    font-weight: 700;
+    color: #F9B23D;
+}
+
+.Action {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-height: 450px;
+}
+
+.playerButton > button, 
+.computerButton > button , 
+.resetButton > button {
+    border-radius: 10%;
+    width: 120px;
+    height: 120px;
+    border: none;
+    background-color: transparent;
+}
+
+.Rock {
+    height: 60px; 
+    width: 90px;
+}
+
+.Paper {
+    height: 100px; 
+    width: 75px;
+}
+
+.Scissors {
+    height: 115px; 
+    width: 100px;
+}
+
+.status {
+    position: relative;
+    top: 165px;
+    width: 17vw;
+    height: 110px;
+    border-radius: 5%;
+    letter-spacing: 4px;
+    font-weight: 700;
+    font-size: 105px;
+    color: #BD0000; 
+    line-height: 110px;
+}
+
+.resultStatus {
+    position: relative;
+    top: 165px;
+    color: white;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 40px;
+    transform: rotate(-30deg);
+    width: 17vw;
+    height: 110px;
+    border-radius: 5%;
+    letter-spacing: 4px;
+    background-color: #4C9654;
+}
+
+.refresh > div > button {
+    width: 80px;
+    height: 80px;
+}
+
+.r-img {
+    height: 50px; 
+    width: 50px
+}

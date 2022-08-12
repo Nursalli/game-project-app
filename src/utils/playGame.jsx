@@ -1,8 +1,10 @@
+import axios from 'axios';
+
 const PlayGame = (e) => {
 	// playing game's variable based on player action
 	let playerChoice = null;
-  let compChoice = null;
-  let result = null;
+  	let compChoice = null;
+  	let result = null;
 
 	let gameStatus = document.getElementsByClassName("status")[0]; //the status text in the middle ("VS")
 
@@ -131,6 +133,59 @@ const PlayGame = (e) => {
 			console.log("COMPUTER Win");
 		}
 	}
+
+	let gameHistoryId;
+
+	async function initHistory() {
+		try {
+			let res = await axios({
+				method: 'post',
+				url: '/games/play/init',
+				headers: { 
+				  'Authorization': `Bearer ${localStorage.getItem('token')}`
+				},
+				data : {
+					id: 1,
+					playedAt: new Date().toISOString()
+				}
+			})
+			gameHistoryId = res.data.data.id;
+			console.log(res);
+		} catch(err) {
+			console.log(err)
+		}
+	}
+
+	async function updateHistory() {
+		try {
+			let res = await axios({
+				method: 'post',
+				url: '/games/play/com',
+				headers: { 
+				  'Authorization': `Bearer ${localStorage.getItem('token')}`
+				},
+				data : {
+					id: 1,
+					idHistory: gameHistoryId,
+					status: result.toUpperCase(),
+					metaData: {
+						playerChoice: playerChoice.toUpperCase(),
+						comChoice: compChoice.toUpperCase()
+					}
+				}
+			})
+			console.log(res);
+		} catch(err) {
+			console.log(err)
+		}
+	}
+
+	async function createHistory() {
+		await initHistory();
+		await updateHistory();
+	}
+
+	createHistory();
 	
 	// refresh button functions (reset style)
 	const refreshButton = document.getElementsByTagName("button")[7];

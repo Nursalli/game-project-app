@@ -1,41 +1,46 @@
 import { GameBox } from "../components/index";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function GameList() {
+  const [games, setGames] = useState([]);
+
+  useEffect(() => {
+    let ignore = false;
+
+    async function fetchData() {
+      const result = await axios("/games/listing");
+      if (!ignore) setGames(result.data.data);
+    }
+
+    fetchData();
+    return () => { ignore = true; }
+  }, []);
+
   return (
     <div className="justify-content-around">
       <div className="d-flex w-100 justify-content-center pt-5">
             <p>Our Games</p>
       </div>
 
-      <div class = "container-fluid d-flex justify-content-center">
-      <div class = "row">
-        <div class = "col-sm-4">
-          <GameBox gameName="Game 1"/>
-        </div>
-        <div class = "col-sm-4">
-          <GameBox gameName="Game 2"/>
-        </div>
-        <div class = "col-sm-4">
-          <GameBox gameName="Game 3"/>
-        </div>
-        <div class = "col-sm-4">
-          <GameBox gameName="Game 4"/>
-        </div>
-        <div class = "col-sm-4">
-          <GameBox gameName="Game 5"/>
-        </div>
-        <div class = "col-sm-4">
-          <GameBox gameName="Game 6"/>
-        </div>
-        <div class = "col-sm-4">
-          <GameBox gameName="Game 7"/>
-        </div>
-        <div class = "col-sm-4">
-          <GameBox gameName="Game 8"/>
-        </div>
-        <div class = "col-sm-4">
-          <GameBox gameName="Game 9"/>
-        </div>
+      <div className="container-fluid d-flex justify-content-center">
+        <div className="row">
+          {
+            games.map((game) => {
+              return (
+                <div className= "col-md-4 mb-4" key={"game" + game.id}>
+                  <GameBox 
+                    gameImg={game.thumbnail}
+                    gameName={game.title}
+                    gameDescription={game.description}
+                    playCount={game.playCount}
+                    viewCount={game.viewCount}
+                    gameUrl={game.gameUrl}
+                  />
+                </div>            
+              )
+            })
+          }
         </div>
       </div>
     </div>

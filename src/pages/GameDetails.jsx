@@ -41,7 +41,7 @@ function GameDetails() {
   const handlePlayingGame = () => {
     let route = data.data?.id;
     axios
-      .post("/games/play-count/" + route)
+      .post("/games/play-count/" + route, {}, config)
       .then((res) => {
         navigate("/playing/" + route);
       })

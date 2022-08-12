@@ -40,9 +40,14 @@ function GameDetails() {
 
   const handlePlayingGame = () => {
     let route = data.data?.id;
-    axios.post("/games/view-count/" + route).then((res) => {
-      navigate("/playing/" + route);
-    });
+    axios
+      .post("/games/play-count/" + route)
+      .then((res) => {
+        navigate("/playing/" + route);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const imageStyle = {

@@ -30,6 +30,7 @@ function GameList() {
               return (
                 <div className= "col-md-4 mb-4" key={"game" + game.id}>
                   <GameBox 
+                    gameId={game.id}
                     gameImg={game.thumbnail}
                     gameName={game.title}
                     gameDescription={game.description}

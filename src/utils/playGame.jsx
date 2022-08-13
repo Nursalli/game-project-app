@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const PlayGame = (e) => {
+const PlayGame = async (e) => {
 	// playing game's variable based on player action
 	let playerChoice = null;
   	let compChoice = null;
@@ -37,6 +37,26 @@ const PlayGame = (e) => {
 		el.style.pointerEvents = "none";
 	});
 
+	let gameHistoryId;
+
+	try {
+		let res = await axios({
+			method: 'post',
+			url: '/games/play/init',
+			headers: { 
+				'Authorization': `Bearer ${localStorage.getItem('token')}`
+			},
+			data : {
+				id: Number(window.location.pathname.split("/")[2]),
+				playedAt: new Date().toISOString()
+			}
+		})
+		gameHistoryId = res.data.data.id;
+		console.log(res);
+	} catch(err) {
+		console.log(err)
+	}
+	
 	// comp actions buttons declaration
 	const compRock = document.getElementsByTagName("button")[4];
 	const compPaper = document.getElementsByTagName("button")[5];
@@ -134,58 +154,34 @@ const PlayGame = (e) => {
 		}
 	}
 
-	let gameHistoryId;
-
-	async function initHistory() {
-		try {
-			let res = await axios({
-				method: 'post',
-				url: '/games/play/init',
-				headers: { 
-				  'Authorization': `Bearer ${localStorage.getItem('token')}`
-				},
-				data : {
-					id: 1,
-					playedAt: new Date().toISOString()
+	try {
+		let res = await axios({
+			method: 'post',
+			url: '/games/play/com',
+			headers: { 
+				'Authorization': `Bearer ${localStorage.getItem('token')}`
+			},
+			data : {
+				id: 1,
+				idHistory: gameHistoryId,
+				status: result.toUpperCase(),
+				metaData: {
+					playerChoice: playerChoice.toUpperCase(),
+					comChoice: compChoice.toUpperCase()
 				}
-			})
-			gameHistoryId = res.data.data.id;
-			console.log(res);
-		} catch(err) {
-			console.log(err)
-		}
+			}
+		})
+		console.log(res);
+	} catch(err) {
+		console.log(err)
 	}
 
-	async function updateHistory() {
-		try {
-			let res = await axios({
-				method: 'post',
-				url: '/games/play/com',
-				headers: { 
-				  'Authorization': `Bearer ${localStorage.getItem('token')}`
-				},
-				data : {
-					id: 1,
-					idHistory: gameHistoryId,
-					status: result.toUpperCase(),
-					metaData: {
-						playerChoice: playerChoice.toUpperCase(),
-						comChoice: compChoice.toUpperCase()
-					}
-				}
-			})
-			console.log(res);
-		} catch(err) {
-			console.log(err)
-		}
-	}
+	// async function createHistory() {
+	// 	await initHistory();
+	// 	await updateHistory();
+	// }
 
-	async function createHistory() {
-		await initHistory();
-		await updateHistory();
-	}
-
-	createHistory();
+	// createHistory();
 	
 	// refresh button functions (reset style)
 	const refreshButton = document.getElementsByTagName("button")[7];

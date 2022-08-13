@@ -1,8 +1,10 @@
-const PlayGame = (e) => {
+import axios from 'axios';
+
+const PlayGame = async (e, gameId) => {
 	// playing game's variable based on player action
 	let playerChoice = null;
-  let compChoice = null;
-  let result = null;
+  	let compChoice = null;
+  	let result = null;
 
 	let gameStatus = document.getElementsByClassName("status")[0]; //the status text in the middle ("VS")
 
@@ -35,6 +37,26 @@ const PlayGame = (e) => {
 		el.style.pointerEvents = "none";
 	});
 
+	let gameHistoryId;
+
+	try {
+		let res = await axios({
+			method: 'post',
+			url: '/games/play/init',
+			headers: { 
+				'Authorization': `Bearer ${localStorage.getItem('token')}`
+			},
+			data : {
+				id: Number(gameId),
+				playedAt: new Date().toISOString()
+			}
+		})
+		gameHistoryId = res.data.data.id;
+		console.log(res);
+	} catch(err) {
+		console.log(err)
+	}
+	
 	// comp actions buttons declaration
 	const compRock = document.getElementsByTagName("button")[4];
 	const compPaper = document.getElementsByTagName("button")[5];
@@ -131,6 +153,35 @@ const PlayGame = (e) => {
 			console.log("COMPUTER Win");
 		}
 	}
+
+	try {
+		let res = await axios({
+			method: 'post',
+			url: '/games/play/com',
+			headers: { 
+				'Authorization': `Bearer ${localStorage.getItem('token')}`
+			},
+			data : {
+				id: Number(gameId),
+				idHistory: gameHistoryId,
+				status: result.toUpperCase(),
+				metaData: {
+					playerChoice: playerChoice.toUpperCase(),
+					comChoice: compChoice.toUpperCase()
+				}
+			}
+		})
+		console.log(res);
+	} catch(err) {
+		console.log(err)
+	}
+
+	// async function createHistory() {
+	// 	await initHistory();
+	// 	await updateHistory();
+	// }
+
+	// createHistory();
 	
 	// refresh button functions (reset style)
 	const refreshButton = document.getElementsByTagName("button")[7];

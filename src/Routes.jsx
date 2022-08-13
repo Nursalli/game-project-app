@@ -13,7 +13,8 @@ import Playing from "./pages/PlayingPage/Playing";
 function Routes(props) {
   return (
     <ReactRoutes>
-      <Route path="/games" element={<GameList />} />
+      <Route path="/games" element={<Landing />} />
+      <Route path="/games/listing" element={<GameList />} />
       <Route path="/games/:gameId" element={<GameDetails />} />
       <Route path="/playing/:gameId" element={<Playing />} />
       {/* <Route path="/profile/:userId" element={<Profile />} /> */}

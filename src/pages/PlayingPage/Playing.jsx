@@ -9,7 +9,7 @@ function Playing() {
   const navigate = useNavigate();
 
   const onButtonClick = (e) => {
-    PlayGame(e);
+    PlayGame(e, gameId);
   };
 
   useEffect(() => {

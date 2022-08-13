@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const PlayGame = async (e) => {
+const PlayGame = async (e, gameId) => {
 	// playing game's variable based on player action
 	let playerChoice = null;
   	let compChoice = null;
@@ -47,7 +47,7 @@ const PlayGame = async (e) => {
 				'Authorization': `Bearer ${localStorage.getItem('token')}`
 			},
 			data : {
-				id: Number(window.location.pathname.split("/")[2]),
+				id: Number(gameId),
 				playedAt: new Date().toISOString()
 			}
 		})
@@ -162,7 +162,7 @@ const PlayGame = async (e) => {
 				'Authorization': `Bearer ${localStorage.getItem('token')}`
 			},
 			data : {
-				id: 1,
+				id: Number(gameId),
 				idHistory: gameHistoryId,
 				status: result.toUpperCase(),
 				metaData: {

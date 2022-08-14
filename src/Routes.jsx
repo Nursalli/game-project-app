@@ -18,7 +18,7 @@ function Routes(props) {
       <Route path="/games/:gameId" element={<GameDetails />} />
       <Route path="/playing/:gameId" element={<Playing />} />
       {/* <Route path="/profile/:userId" element={<Profile />} /> */}
-      <Route path="/profile" element={<Profile />} />
+      <Route path="/profile/:profileId" element={<Profile />} />
       <Route path="/home" element={<Home />} />
       <Route path="/login" element={<Login onSignIn={props.onSignIn} />} />
       <Route

@@ -1,13 +1,28 @@
 import { Link, useNavigate } from "react-router-dom";
+import jwtDecode from "jwt-decode";
+import { useEffect, useState } from "react";
 
 function Navbar(props) {
   const { isLoggedIn } = props;
   let navigate = useNavigate();
   let verifiedUser = localStorage.getItem("token") !== null;
+  const token = localStorage.getItem("token");
+  const [authUser, setAuthUser] = useState("");
 
   const handleLogOut = () => {
     localStorage.removeItem("token");
-    navigate("/login")
+    navigate("/login");
+  };
+
+  useEffect(() => {
+    if (token !== null) {
+      var decoded = jwtDecode(token);
+      setAuthUser(decoded.sub);
+    }
+  }, [token]);
+
+  const myProfileRoute = {
+    pathname: "/profile/" + authUser,
   };
 
   return (
@@ -43,15 +58,12 @@ function Navbar(props) {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/profile/123">
+                <Link className="nav-link" to={myProfileRoute}>
                   My Profile
                 </Link>
               </li>
               <li className="nav-item">
-                <button
-                  className="nav-link"
-                  onClick={handleLogOut}
-                >
+                <button className="nav-link" onClick={handleLogOut}>
                   Logout
                 </button>
               </li>

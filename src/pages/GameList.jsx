@@ -16,7 +16,6 @@ function GameList() {
     fetchData();
     return () => { ignore = true; }
   }, []);
-
   return (
     <div className="justify-content-around">
       <div className="d-flex w-100 justify-content-center pt-5">

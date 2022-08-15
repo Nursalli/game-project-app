@@ -13,6 +13,12 @@ function Playing() {
   };
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      navigate("/404", { replace: true });
+    }
+
     if (gameId > 1) {
       navigate("/404", { replace: true });
     }

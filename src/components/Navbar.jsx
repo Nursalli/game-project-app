@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Navbar(props) {
   const { isLoggedIn } = props;
@@ -45,8 +46,8 @@ function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link" to="/playing/1">
-                Suit Game
+              <Link className="nav-link" to="/games/1" onClick={() => axios.post("/games/view-count/1").then((res) => console.log(res)).catch((err) => console.log(err))}>
+                  Suit Game
               </Link>
             </li>
           </ul>

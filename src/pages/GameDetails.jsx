@@ -46,6 +46,7 @@ function GameDetails() {
         navigate("/playing/" + route);
       })
       .catch((err) => {
+        navigate("/login");
         console.log(err);
       });
   };
@@ -99,6 +100,7 @@ function GameDetails() {
             return (
               <GameDetailsComponent
                 key={index}
+                id={lead.id}
                 email={lead.email}
                 name={lead.name}
                 BadgeName={lead.badge}

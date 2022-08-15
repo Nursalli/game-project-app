@@ -17,13 +17,11 @@ function GameHistory(props) {
 
         <div className="col d-flex flex-column justify-content-center align-items-start gameName">
           <p>{props.gameName}</p>
-
-          <button type="button" className="c-button">
-            Play
-          </button>
         </div>
-
-        <div className="col scoreHistory">
+        <div className="col d-flex flex-column justify-content-center align-items-start">
+          <p>{props.gameResult}</p>
+        </div>
+        <div className="col d-flex flex-column justify-content-center align-items-start scoreHistory">
           <p>{props.addPoint}</p>
         </div>
       </div>

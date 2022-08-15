@@ -46,6 +46,7 @@ function GameDetails() {
         navigate("/playing/" + route);
       })
       .catch((err) => {
+        navigate("/login");
         console.log(err);
       });
   };

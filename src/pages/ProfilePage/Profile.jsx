@@ -5,6 +5,7 @@ import "./Profile.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function Profile() {
   const { profileId } = useParams();
@@ -75,6 +76,7 @@ function Profile() {
     axios
       .get("/users/my-games", config)
       .then((res) => {
+        setMyGames(res.data?.data);
         console.log(res.data?.data);
       })
       .catch((err) => {
@@ -102,15 +104,20 @@ function Profile() {
         config
       )
       .then((res) => {
-        console.log(res);
+        Swal.fire({
+          icon: "success",
+          title: res.data?.message || "succesfully edited",
+          timer: 2500,
+        });
       })
       .catch((err) => {
-        console.log(err);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.response?.data?.message || "something wrong!",
+        });
       });
   };
-
-  console.log("ini profile id : " + profileId);
-  console.log("ini auth user : " + authUser);
   return (
     <>
       <div className="container d-flex flex-column justify-content-center align-items-center mb-4">
@@ -277,10 +284,16 @@ function Profile() {
               <p>My Games</p>
             </div>
             <div className="row-2 scrollFlow2">
-              <GameList gameName="Game 3" gamePoint="3005" />
-              <GameList gameName="Game 3" gamePoint="3005" />
-              <GameList gameName="Game 3" gamePoint="3005" />
-              <GameList gameName="Game 3" gamePoint="3005" />
+              {myGames.map((games) => {
+                return (
+                  <GameList
+                    gameName={games.gameName}
+                    gameThumbnail={games.gameThumbnail}
+                    gamePoint={games.totalPointsEarned}
+                    gameUrl={games.gameUrl}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@ function GameList(props) {
         </div>
 
         <div className="col d-flex flex-column justify-content-center align-items-start gameName">
-          <p>{props.gameName}</p>
+          <p style={{ textAlign: "left" }}>{props.gameName}</p>
 
           <a href={props.gameUrl || "#"}>
             <button type="button" className="c-button">

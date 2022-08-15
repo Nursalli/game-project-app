@@ -26,7 +26,7 @@ const useForm = () => {
       .then((res) => {
         Swal.fire({
           icon: "success",
-          title: "Login Berhasil",
+          title: "Register Berhasil",
           timer: 2500,
         });
         navigate("/login");

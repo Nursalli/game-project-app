@@ -155,6 +155,7 @@ function Profile() {
                       value={userBio.email}
                       className="form-control"
                       onChange={handleChange}
+                      disabled={guest}
                     />
                   </div>
                 </div>
@@ -176,6 +177,7 @@ function Profile() {
                       value={userBio.firstName}
                       className="form-control"
                       onChange={handleChange}
+                      disabled={guest}
                     />
                   </div>
                 </div>
@@ -197,6 +199,7 @@ function Profile() {
                       id="form2Example1"
                       className="form-control"
                       onChange={handleChange}
+                      disabled={guest}
                     />
                   </div>
                 </div>
@@ -218,6 +221,7 @@ function Profile() {
                       id="form2Example1"
                       className="form-control"
                       onChange={handleChange}
+                      disabled={guest}
                     />
                   </div>
                 </div>
@@ -239,6 +243,7 @@ function Profile() {
                       id="form2Example1"
                       className="form-control"
                       onChange={handleChange}
+                      disabled={guest}
                     />
                   </div>
                 </div>
@@ -260,6 +265,7 @@ function Profile() {
                       id="form2Example1"
                       className="form-control"
                       onChange={handleChange}
+                      disabled={guest}
                     />
                   </div>
                 </div>

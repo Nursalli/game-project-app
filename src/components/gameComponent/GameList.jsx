@@ -1,4 +1,5 @@
 import "./GameComponent.css";
+import axios from 'axios';
 
 function GameList(props) {
   return (
@@ -18,7 +19,7 @@ function GameList(props) {
         <div className="col d-flex flex-column justify-content-center align-items-start gameName">
           <p style={{ textAlign: "left" }}>{props.gameName}</p>
 
-          <a href={props.gameUrl || "#"}>
+          <a href={props.gameUrl || "#"} onClick={() => axios.post("/games/view-count/" + props.gameId).then((res) => console.log(res)).catch((err) => console.log(err))}>
             <button type="button" className="c-button">
               Play
             </button>

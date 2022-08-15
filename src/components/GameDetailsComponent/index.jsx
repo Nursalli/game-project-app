@@ -16,7 +16,11 @@ function index(props) {
           className="col d-flex flex-column justify-content-center align-items-start"
           style={{ width: "100vw" }}
         >
-          <div className="">{props.email}</div>
+          <div className="">
+            <a href={`/profile/${props.id}`}>
+              {props.email}
+            </a>
+          </div>
           <div className="pb-2">@{props.name}</div>
           <div className="border w-100 text-center">{props.BadgeName}</div>
         </div>

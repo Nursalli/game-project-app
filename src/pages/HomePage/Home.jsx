@@ -73,8 +73,10 @@ function Home() {
                 return (
                   <GameList
                     key={index}
+                    gameId={games.gameUrl.split("/")[2]}
                     gameName={games.gameName}
                     gamePoint={games.totalPointsEarned || 0}
+                    gameUrl={games.gameUrl}
                   />
                 );
               })}
@@ -92,6 +94,7 @@ function Home() {
                     gameName={history.gameName}
                     addPoint={history.pointsEarned || 0}
                     gameThumbnail={history.gameThumbnail}
+                    gameResult={history.status}
                   />
                 );
               })}

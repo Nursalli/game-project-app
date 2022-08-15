@@ -99,6 +99,7 @@ function GameDetails() {
             return (
               <GameDetailsComponent
                 key={index}
+                id={lead.id}
                 email={lead.email}
                 name={lead.name}
                 BadgeName={lead.badge}

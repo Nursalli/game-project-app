@@ -35,7 +35,8 @@ function Home() {
 
       response = await fetchApi({
         uriPath: "/users/my-games",
-        method: "GET",
+        method: "POST",
+        data: { userId: await authUser() },
         headers: {
           Authorization: true,
         },

@@ -74,7 +74,7 @@ function Profile() {
 
   useEffect(() => {
     axios
-      .get("/users/my-games", config)
+      .post("/users/my-games", { userId: parseInt(profileId) }, config)
       .then((res) => {
         setMyGames(res.data?.data);
         console.log(res.data?.data);

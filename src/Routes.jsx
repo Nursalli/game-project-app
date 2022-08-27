@@ -9,6 +9,7 @@ import Register from "./pages/Register";
 import Profile from "./pages/ProfilePage/Profile";
 import Landing from "./pages/Landing";
 import Playing from "./pages/PlayingPage/Playing";
+import AuthAction from "./pages/AuthAction";
 
 function Routes(props) {
   return (
@@ -25,6 +26,7 @@ function Routes(props) {
         path="/register"
         element={<Register onSignUp={props.onSignUp} />}
       />
+      <Route path="/auth-action" element={<AuthAction />} />
       <Route path="/" element={<Landing />} />
       <Route path="*" element={<Page404 />} />
     </ReactRoutes>

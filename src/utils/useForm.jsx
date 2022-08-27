@@ -1,7 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { firebaseAuth } from "../firebase";
 
 const useForm = () => {
   const [email, setEmail] = useState("");
@@ -24,6 +26,9 @@ const useForm = () => {
         confirmPassword: confirmPassword,
       })
       .then((res) => {
+        createUserWithEmailAndPassword(firebaseAuth, email, password).then((res) => {
+          console.log('firebase response', res);
+        })
         Swal.fire({
           icon: "success",
           title: "Register Berhasil",

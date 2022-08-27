@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import useForm from "../utils/useForm";
 import { useNavigate } from "react-router-dom";
+import { sendPasswordResetEmail } from 'firebase/auth';
+import { firebaseAuth } from "../firebase";
 
 function Login(props) {
   const { handleLogin, email, setEmail, password, setPassword, loading } =
@@ -77,6 +79,14 @@ function Login(props) {
           </button>
         </div>
       </form>
+      <button onClick={() => {
+        sendPasswordResetEmail(firebaseAuth, email, {
+          url: 'http://localhost:5173/resetPassword'
+        }).then((res) => {
+          console.log("sendPasswordResetEmail", res)
+        })
+        console.log("triggered")
+      }}>Forgot Password</button>
     </div>
   );
 }
